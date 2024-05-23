@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+
 # Create your models here.
 class RoomCategory(models.Model):
     name = models.CharField(max_length=20)
@@ -13,9 +14,9 @@ class Room(models.Model):
     description = models.ForeignKey(RoomDescription, null=True, on_delete=models.SET_NULL)
 
 #TODO: set default name of file
-# class Image(models.Model):
-#     room_description = models.ForeignKey(RoomDescription, on_delete=models.SET_NULL)
-#     image = models.ImageField(upload_to='media/')
+class Image(models.Model):
+    room_description = models.ForeignKey(RoomDescription, null=True, on_delete=models.SET_NULL)
+    image = models.ImageField(upload_to='media/')
     
 class Reservation(models.Model):
     user = models.ForeignKey(get_user_model(), null=True, on_delete=models.SET_NULL)

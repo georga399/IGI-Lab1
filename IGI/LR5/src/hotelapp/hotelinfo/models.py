@@ -18,13 +18,13 @@ class Discount(models.Model):
     expire_date = models.DateTimeField(auto_now=False, auto_now_add=False)
 
 class Job(models.Model):
-    position = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
     description = models.CharField(max_length=500)
-
-class EmployeeProfile(models.Model):
-    position = models.CharField(max_length=50)
-    user = models.OneToOneField(get_user_model(), on_delete = models.CASCADE, primary_key = True)
 
 class Review(models.Model):
     body = models.CharField(max_length=500)
     user = models.OneToOneField(get_user_model(), on_delete = models.CASCADE, primary_key = True)
+
+class Company(models.Model):
+    title = models.CharField(max_length=50)
+    description = models.CharField(max_length=500)

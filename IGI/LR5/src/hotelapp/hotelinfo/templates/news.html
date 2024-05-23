@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}
+News
+{% endblock %}
+
+{% block content %}
+    {% for element in news %} 
+        <h1>{{ element.last_modified_date }}: {{ element.title }}</h1>
+    {% endfor %}
+{% endblock %}

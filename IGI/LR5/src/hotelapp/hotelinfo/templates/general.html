@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}
+General
+{% endblock %}
+
+{% block content %}
+<h1>Last modifyed article {{ article.last_modified_date }}: {{ article.title }}</h1>
+{% endblock %}
