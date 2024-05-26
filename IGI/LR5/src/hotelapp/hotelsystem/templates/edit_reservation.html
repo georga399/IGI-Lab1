@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Edit Reservation - ID: {{ reservation.id }}</h1>
+
+    <form method="POST" action="{% url 'edit_reservation' reservation.id %}">
+        {% csrf_token %}
+        <label for="adults_count">Number of Adults:</label>
+        <input type="number" name="adults_count" value="{{ reservation.adults_count }}" required>
+
+        <label for="start_date">Start Date:</label>
+        <input type="datetime-local" name="start_date" value="{{ reservation.start_date }}" required>
+
+        <label for="end_date">End Date:</label>
+        <input type="datetime-local" name="end_date" value="{{ reservation.end_date }}" required>
+
+        <label for="price">Price:</label>
+        <input type="number" name="price" step="0.01" value="{{ reservation.price }}" required>
+
+        <button type="submit">Save Changes</button>
+    </form>
+{% endblock %}

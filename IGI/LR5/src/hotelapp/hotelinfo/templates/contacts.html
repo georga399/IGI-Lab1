@@ -1,0 +1,28 @@
+<!-- contacts.html -->
+{% extends 'base.html' %}
+
+{% block title %}Contacts - Hotel App{% endblock %}
+
+{% block content %}
+    <h1>Contacts</h1>
+
+    {% for employee in employees %}
+        <div>
+            <h2>{{ employee.user.first_name }} {{ employee.user.last_name }}</h2>
+            {% if employee.image %}
+                <img src="{{ employee.image.url }}" alt="Employee Photo">
+            {% endif %}
+            <p>Phone Number: {{ employee.phone_number }}</p>
+            <p>Email: {{ employee.user.email }}</p>
+            <p>Tasks:</p>
+            <ul>
+                {% for task in employee.task_set.all %}
+                    <li>{{ task.title }} - {{ task.description }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% empty %}
+        <p>No employees available.</p>
+    {% endfor %}
+
+{% endblock %}

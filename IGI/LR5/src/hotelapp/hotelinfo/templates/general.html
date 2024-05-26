@@ -5,5 +5,14 @@ General
 {% endblock %}
 
 {% block content %}
-<h1>Last modifyed article {{ article.last_modified_date }}: {{ article.title }}</h1>
+<div>
+    <h2>Latest article.</h2>
+    <h2>{{ article.title }}</h2>
+    <p>Summary: {{ article.summary }}</p>
+    <p>Last Modified: {{ article.last_modified_date }}</p>
+    {% if article.image %}
+        <img src="{{ article.image.url }}" alt="Article Image">
+    {% endif %}
+    <a href="{% url 'article' id=article.id %}">READ MORE</a>
+</div> 
 {% endblock %}

@@ -1,35 +1,85 @@
+from pyexpat.errors import messages
+from django.utils import timezone
 import logging
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseNotFound
-from .models import Company, Article
+from django.contrib.auth.decorators import login_required
+
+from accounts.models import Employee
+from .models import Company, Article, FAQ, Job, Promo, Review
+from .forms import ReviewForm
 
 logger = logging.getLogger(__name__)
 
-# Create your views here.
 def policy(request):
+    logger.info("GET policy page")
     return render(request, 'policy.html')
 
 def about(request):
-    company = Company.objects.first()  # or get the company instance however you need
+    company = Company.objects.first()
     logger.info('Company details: %s', company)
     return render(request, 'about.html', context={'company': company})
 
 def general(request):
-    article = Article.objects.first()
+    article = None
+    try:
+        article = Article.objects.latest('last_modified_date')
+    except:
+        return render(request, 'base.html')
     return render(request, 'general.html',{'article': article})
+
+def handler404(request, exception):
+    return render(request, '404.html', status=404)
+
+def handler403(request, exception):
+    return render(request, '403.html', status=403)
 
 def news(request):
     news = Article.objects.all()
-    return render(request, 'news.html', {'news': news})
+    logger.info(f"Get article counts: {len(news)}")
+    return render(request, 'news.html', {'articles': news})
+
+def faq(request):
+    faqs = FAQ.objects.all()
+    logger.info(f"Get faqs. Count: {len(faqs)}")
+    return render(request, 'faq.html', {'faq': faqs})
 
 def article(request, id):
     article = None
     try:
         article = Article.objects.get(id=id)
     except:
-        pass
+        return HttpResponseNotFound('Article not found')
+    return render(request, 'article.html', {'article': article})
 
-    if article is None:
-        return HttpResponseNotFound()
+def contacts(request):
+    employees = Employee.objects.all()
+    return render(request, 'contacts.html', {'employees': employees})
+
+def vacancy(request):
+    jobs = Job.objects.all()
+    return render(request, 'vacancy.html', {'jobs': jobs})
+
+def reviews(request):
+    reviews = Review.objects.all()
+    return render(request, 'reviews.html', {'reviews': reviews})
+
+@login_required
+def add_review(request):
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.user = request.user
+            review.save()
+            return redirect('reviews')
     else:
-        return render(request, 'article', {'article': article})
+        form = ReviewForm()
+    return render(request, 'add_review.html', {'form': form})
+
+def promos(request):
+    current_time = timezone.now()
+    logger.info(f"GET promos: current_time to get promos {current_time}")
+    active_promos = Promo.objects.filter(start_date__lte=current_time, expire_date__gte=current_time)
+    archived_promos = Promo.objects.filter(expire_date__lt=current_time)
+    return render(request, 'promotions.html', {'active_promos': active_promos, 'archived_promos': archived_promos})

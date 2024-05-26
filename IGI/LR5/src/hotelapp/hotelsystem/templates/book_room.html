@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Book Room - {{ room.number }}</h1>
+
+    <p>Category: {{ room.category.name }}</p>
+    <p>Description: {{ room.description }}</p>
+    <p>Capacity: {{ room.capacity }}</p>
+    <!-- Add more room details as needed -->
+
+    <form method="POST" action="{% url 'book_room' room.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Book Now</button>
+    </form>
+{% endblock %}
