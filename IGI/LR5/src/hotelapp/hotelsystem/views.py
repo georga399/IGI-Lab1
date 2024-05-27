@@ -7,10 +7,16 @@ from django.contrib.auth import get_user_model, get_user
 from django.http import HttpResponseNotAllowed, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils import timezone
+from django.db.models import Count, Sum
 
 from hotelsystem.forms import BookingForm
 from .models import Image, Reservation, Payment, Room, RoomCategory
 from accounts.models import Client, PromoInstance
+from statistics import mean, median, mode
+import pandas as pd
+import matplotlib.pyplot as plt
+from io import BytesIO
+import base64
 
 logger = logging.getLogger(__name__)
 
@@ -189,5 +195,83 @@ def delete_reservation(request, reservation_id):
 @user_passes_test(lambda u: u.is_staff)
 def staff_cabinet(request):
     reservations = Reservation.objects.all()
+    clients = Client.objects.select_related('user').order_by('user__last_name')
+    payments = Payment.objects.all()
+
+    # Calculate total sum
+
+    logger.info(f'count of payments: {payments.count()}')
+    total_sum = mean_value = median_value = mode_value = 0
+    if(payments.count() != 0):
+        total_sum = sum(payment.amount for payment in payments)
+
+        # Calculate mean
+        payment_amounts = [payment.amount for payment in payments]
+        mean_value = mean(payment_amounts)
+
+        # Calculate median
+        median_value = median(payment_amounts)
+
+        # Calculate mode
+        mode_value = mode(payment_amounts)
+    
+     # User age distribution
+
     clients = Client.objects.all()
-    return render(request, 'staff_cabinet.html', {'reservations': reservations, 'clients': clients})
+    ages = pd.to_datetime('today').year - pd.to_datetime(clients.values_list('date_of_birth', flat=True)).year
+
+    # Calculate mean
+    cl_mean_value = mean(ages)
+
+    # Calculate median
+    cl_median_value = median(ages)
+
+    # Calculate mode
+    cl_mode_value = mode(ages)
+
+    age_counts = ages.value_counts().sort_index()
+
+    # Plot age distribution
+    plt.bar(age_counts.index, age_counts.values)
+    plt.xlabel('Age')
+    plt.ylabel('Count')
+    plt.title('User Age Distribution')
+
+    # Save plot to BytesIO
+    image_stream = BytesIO()
+    plt.savefig(image_stream, format='png')
+    image_stream.seek(0)
+
+    # Encode the image stream as base64
+    image_base64 = base64.b64encode(image_stream.getvalue()).decode('utf-8')
+
+    popular_room = Reservation.objects.values('room').annotate(reservation_count=Count('room')).order_by('-reservation_count').first()
+
+    room = None
+
+    if popular_room is not None:
+        room_id = popular_room['room']
+        room = Room.objects.get(id=room_id)
+
+    pr_room = None
+    profit = Payment.objects.values('reservation__room').annotate(total_profit=Sum('amount')).order_by('-total_profit').first()
+    if profit is not None:
+        pr_room_id = profit['reservation__room']
+        pr_room = Room.objects.get(id=pr_room_id)
+
+
+    context = {
+        'reservations': reservations, 'clients': clients, 'payments': payments,
+        'total_sum': total_sum,
+        'mean_value': mean_value,
+        'median_value': median_value,
+        'mode_value': mode_value,
+        'image_base64': image_base64,
+        'cl_mean_value': cl_mean_value,
+        'cl_median_value': cl_median_value,
+        'cl_mode_value': cl_mode_value,
+        'popular_room': room,
+        'most_profitable_room': pr_room,
+
+    }
+    return render(request, 'staff_cabinet.html', context)

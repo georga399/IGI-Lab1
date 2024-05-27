@@ -3,6 +3,39 @@
 {% block content %}
     <h1>Staff Cabinet</h1>
 
+    <h2>Payment Statistics</h1>
+    <p>Total Sum: {{ total_sum }}</p>
+    <p>Mean: {{ mean_value }}</p>
+    <p>Median: {{ median_value }}</p>
+    <p>Mode: {{ mode_value }}</p>
+
+    <h2>User Age Distribution</h2>
+    <img src="data:image/png;base64,{{ image_base64 }}" alt="User Age Distribution">
+    <p>Mean: {{ cl_mean_value }}</p>
+    <p>Median: {{ cl_median_value }}</p>
+    <p>Mode: {{ cl_mode_value }}</p>
+
+    {% if popular_room %}
+        <h1>Most Popular Room</h1>
+        <p>Room Number: {{ popular_room.number }}</p>
+        <p>Description: {{ popular_room.description }}</p>
+        <!-- Display other room details as needed -->
+    {% else %}
+        <h1>No Popular Room Found</h1>
+        <p>There are no popular rooms at the moment.</p>
+    {% endif %}
+
+    {% if most_profitable_room %}
+        <h1>Most Profitable Room</h1>
+        <p>Room Number: {{ most_profitable_room.number }}</p>
+        <p>Description: {{ most_profitable_room.description }}</p>
+        <!-- Display other room details as needed -->
+    {% else %}
+        <h1>No Rooms Found</h1>
+        <p>There are no rooms available at the moment.</p>
+    {% endif %}
+    
+
     <h2>Reservations</h2>
     <ul>
         {% for reservation in reservations %}
