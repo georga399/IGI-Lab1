@@ -32,7 +32,7 @@
     <h2>Active Promotions</h2>
     <ul>
         {% for promo in active_promos %}
-            <li>{{ promo.title }} - {{ promo.description }}</li>
+            <li>{{ promo.promo.title }} - {{ promo.promo.description }} - {{ promo.promo.amount }} $</li>
         {% empty %}
             <li>No active promotions</li>
         {% endfor %}
@@ -41,7 +41,7 @@
     <h2>Archived Promotions</h2>
     <ul>
         {% for promo in archived_promos %}
-            <li>{{ promo.title }} - {{ promo.description }}</li>
+            <li>{{ promo.promo.title }} - {{ promo.promo.description }}</li>
         {% empty %}
             <li>No archived promotions</li>
         {% endfor %}

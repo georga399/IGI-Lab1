@@ -37,3 +37,5 @@ class Promo(models.Model):
     start_date = models.DateTimeField(auto_now=False, auto_now_add=False)
     expire_date = models.DateTimeField(auto_now=False, auto_now_add=False)
     amount = models.FloatField()
+    status = models.CharField(max_length=1, choices=PROMO_STATUS)
+    

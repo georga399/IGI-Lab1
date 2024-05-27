@@ -6,7 +6,7 @@
     <h2>{{ room.number }}</h2>
     <p>Category: {{ room.category.name }}</p>
     <p>Description: {{ room.description }}</p>
-    <p>Status: {{ room.status }}</p>
+    <p>Status: {% if room.status == '1' %}Available{% else %}Not Available{% endif %} </p>
     <p>Capacity: {{ room.capacity }}</p>
     <!-- Add more room details as needed -->
 

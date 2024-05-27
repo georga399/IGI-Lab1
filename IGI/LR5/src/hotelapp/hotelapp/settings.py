@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'hotelsystem',
     'hotelinfo',
     'accounts',
+    'hotelapp',
 ]
 
 MIDDLEWARE = [

@@ -35,3 +35,4 @@ class PromoInstance(models.Model):
     amount = models.FloatField()
 
 
+

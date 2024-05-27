@@ -5,6 +5,9 @@ FAQ
 {% endblock %}
 
 {% block content %}
+    <h3>Random Cat Fact</h3>
+    <p>{{ fact.fact }}</p>
+
     {% for q in faq %} 
         <div>
             <h3>Q: {{ q.question }}</h3>

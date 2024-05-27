@@ -1,4 +1,5 @@
 from pyexpat.errors import messages
+import requests
 from django.utils import timezone
 import logging
 from django.shortcuts import render, redirect
@@ -41,8 +42,12 @@ def news(request):
 
 def faq(request):
     faqs = FAQ.objects.all()
+    response = requests.get('https://catfact.ninja/fact')
+    fact = response.json()
+    data = {'fact': fact}
+    
     logger.info(f"Get faqs. Count: {len(faqs)}")
-    return render(request, 'faq.html', {'faq': faqs})
+    return render(request, 'faq.html', {'faq': faqs, 'fact': fact})
 
 def article(request, id):
     article = None
@@ -80,6 +85,16 @@ def add_review(request):
 def promos(request):
     current_time = timezone.now()
     logger.info(f"GET promos: current_time to get promos {current_time}")
+
     active_promos = Promo.objects.filter(start_date__lte=current_time, expire_date__gte=current_time)
     archived_promos = Promo.objects.filter(expire_date__lt=current_time)
+
     return render(request, 'promotions.html', {'active_promos': active_promos, 'archived_promos': archived_promos})
+
+@login_required
+def joker(request):
+    response = requests.get('https://official-joke-api.appspot.com/random_joke')
+    joke = response.json()
+    data = {'joke': joke}
+    logger.info(f"Joke: {joke}")
+    return render(request, 'joker.html', {'joke': joke})

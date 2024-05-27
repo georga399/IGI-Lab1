@@ -16,6 +16,7 @@ class Room(models.Model):
     description = models.TextField()
     status = models.CharField(choices =ROOM_STATUS,max_length = 15)
     capacity = models.SmallIntegerField()
+    one_day_cost = models.FloatField()
 
 class Image(models.Model):
     room = models.ForeignKey(Room, null=True, on_delete=models.SET_NULL)
@@ -26,10 +27,11 @@ class Reservation(models.Model):
     adults_count = models.IntegerField()
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
-    price = models.DecimalField(max_digits = 5, decimal_places=2)
+    price = models.FloatField()
+    room = models.ForeignKey(Room, null=True, on_delete=models.CASCADE)
 
 class Payment(models.Model):
     user = models.ForeignKey(get_user_model(), null=True, on_delete=models.SET_NULL)
     description = models.CharField(max_length=200)
     reservation = models.ForeignKey(Reservation, null=True, on_delete=models.SET_NULL)
-    amount = models.DecimalField(max_digits = 5, decimal_places=2)
+    amount = models.FloatField()
