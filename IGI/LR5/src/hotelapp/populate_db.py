@@ -82,42 +82,42 @@ def seed_data():
             )
 
     # Create articles
-    # for _ in range(5):
-    #     Article.objects.create(
-    #         title=fake.sentence(nb_words=4),
-    #         summary=fake.text(max_nb_chars=200),
-    #         body=fake.text(max_nb_chars=1000),
-    #         # image=fake.image_url(width=None, height=None),
-    #         last_modified_date=timezone.now()
-    #     )
+    for _ in range(5):
+        Article.objects.create(
+            title=fake.sentence(nb_words=4),
+            summary=fake.text(max_nb_chars=200),
+            body=fake.text(max_nb_chars=1000),
+            # image=fake.image_url(width=None, height=None),
+            last_modified_date=timezone.now()
+        )
 
-    # # Create FAQs
-    # for _ in range(5):
-    #     FAQ.objects.create(
-    #         question=fake.sentence(nb_words=6),
-    #         answer=fake.text(max_nb_chars=200)
-    #     )
+    # Create FAQs
+    for _ in range(5):
+        FAQ.objects.create(
+            question=fake.sentence(nb_words=6),
+            answer=fake.text(max_nb_chars=200)
+        )
 
-    # # Create jobs
-    # for _ in range(5):
-    #     Job.objects.create(
-    #         title=fake.job(),
-    #         description=fake.text(max_nb_chars=500)
-    #     )
+    # Create jobs
+    for _ in range(5):
+        Job.objects.create(
+            title=fake.job(),
+            description=fake.text(max_nb_chars=500)
+        )
 
-    # # Create reviews
-    # for client in clients:
-    #     Review.objects.create(
-    #         body=fake.paragraph(nb_sentences=3),
-    #         user=client.user
-    #     )
+    # Create reviews
+    for client in clients:
+        Review.objects.create(
+            body=fake.paragraph(nb_sentences=3),
+            user=client.user
+        )
 
-    # # Create companies
-    # for _ in range(3):
-    #     Company.objects.create(
-    #         title=fake.company(),
-    #         description=fake.text(max_nb_chars=500)
-    #     )
+    # Create companies
+    for _ in range(3):
+        Company.objects.create(
+            title=fake.company(),
+            description=fake.text(max_nb_chars=500)
+        )
 
     # Create room categories
     room_categories = []

@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from django.views.static import serve
 import accounts.views
 import hotelinfo.views
 import hotelsystem.views
@@ -25,7 +26,13 @@ import hotelsystem.views
 handler404 = 'hotelinfo.views.handler404'
 handler403 = 'hotelinfo.views.handler403'
 
+static_urlpatterns = [
+    re_path(r"^media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT}),
+    re_path(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT}),
+]
+
 urlpatterns = [
+    path("", include(static_urlpatterns)),
     path('admin/', admin.site.urls, name='admin'),
 
     re_path(r'.+policy/?$', hotelinfo.views.policy, name='policy'),
@@ -82,5 +89,8 @@ urlpatterns = [
     re_path(r".+about/?$", hotelinfo.views.about, name='about'),
 
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
