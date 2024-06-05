@@ -17,7 +17,7 @@ COPY IGI/LR5/src/hotelapp/ .
 # RUN python manage.py collectstatic --no-input
 
 # Expose the port that the Django server will run on
-EXPOSE 8000
+EXPOSE 8080
 
 # Set the command to start the Django development server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
