@@ -5,13 +5,13 @@ FROM python:3.11
 WORKDIR /app
 
 # Copy the requirements file into the container
-COPY requirements.txt .
+COPY IGI/LR5/src/hotelapp/requirements.txt .
 
 # Install the Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the Django project code into the container
-COPY . .
+COPY IGI/LR5/src/hotelapp/ .
 
 # Collect the Django static files
 # RUN python manage.py collectstatic --no-input
