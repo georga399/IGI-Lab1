@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Personal Cabinet</h1>
+
+    <h2>User Details</h2>
+    <p>
+        First Name: {{ request.user.first_name }}<br>
+        Last Name: {{ request.user.last_name }}<br>
+        Phone Number: {{ request.user.client.phone_number }}<br>
+    </p>
+
+    <h2>Reservations</h2>
+    <ul>
+        {% for reservation in reservations %}
+            <li>
+                Reservation ID: {{ reservation.id }}<br>
+                Adults Count: {{ reservation.adults_count }}<br>
+                Start Date: {{ reservation.start_date }}<br>
+                End Date: {{ reservation.end_date }}<br>
+                Price: {{ reservation.price }}
+                <!-- Add more reservation details as needed -->
+                <br>
+                <a href="{% url 'edit_reservation' reservation.id %}">Edit</a>
+                <a href="{% url 'delete_reservation' reservation.id %}">Delete</a>
+            </li>
+        {% empty %}
+            <li>No reservations found.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Active Promotions</h2>
+    <ul>
+        {% for promo in active_promos %}
+            <li>{{ promo.promo.title }} - {{ promo.promo.description }} - {{ promo.promo.amount }} $</li>
+        {% empty %}
+            <li>No active promotions</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Archived Promotions</h2>
+    <ul>
+        {% for promo in archived_promos %}
+            <li>{{ promo.promo.title }} - {{ promo.promo.description }}</li>
+        {% empty %}
+            <li>No archived promotions</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Payments</h2>
+    <ul>
+        {% for payment in payments %}
+            <li>
+                Payment ID: {{ payment.id }}<br>
+                Description: {{ payment.description }}<br>
+                Amount: {{ payment.amount }}
+                <!-- Add more payment details as needed -->
+            </li>
+        {% empty %}
+            <li>No payments found.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

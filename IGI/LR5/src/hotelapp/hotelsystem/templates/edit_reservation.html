@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Edit Booking - {{ reservation.room.number }}</h1>
+
+    <p>Category: {{ reservation.room.category.name }}</p>
+    <p>Description: {{ reservation.room.description }}</p>
+    <p>Capacity: {{ reservation.room.capacity }}</p>
+    <!-- Add more room details as needed -->
+    <p>One-Day Cost: ${{ reservation.room.one_day_cost }}</p>
+
+    <form method="POST" action="{% url 'edit_reservation' reservation.id %}">
+        {% csrf_token %}
+        <label for="days">Days of reservation:</label>
+        <input type="number" name="days" min="1" required>
+
+        <button type="submit">Save Changes</button>
+    </form>
+{% endblock %}
