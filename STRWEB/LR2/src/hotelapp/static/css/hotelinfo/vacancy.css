@@ -1,0 +1,48 @@
+/* Vacancies Page Styles */
+
+/* Container for job vacancies */
+.vacancies-container {
+  overflow: hidden; /* Clear floats */
+  margin-top: 20px; /* Space above vacancies section */
+}
+
+/* Job card styles */
+.job-card {
+  float: left; /* Float the job cards */
+  background-color: #fff; /* White background for cards */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 15px; /* Padding inside the card */
+  width: calc(30% - 20px); /* Three columns layout with gap adjustment */
+  margin: 10px; /* Space around each card */
+}
+
+/* Title styles */
+.job-card h2 {
+  font-size: 20px; /* Title size */
+}
+
+/* Description styles */
+.job-card p {
+  font-size: 16px; /* Standard font size for description */
+}
+
+/* Clearfix to clear floats after the last job card */
+.vacancies-container::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .job-card {
+      width: calc(45% - 20px); /* Two columns on medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .job-card {
+      width: calc(100% - 20px); /* One column on small screens */
+  }
+}

@@ -1,0 +1,130 @@
+
+.scene {
+  position: relative;
+  width: 100vw;
+  height: 50vh;
+  background-color: #87CEEB; /* Sky color */
+}
+
+/* Road */
+.road {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background-color: #555; /* Road color */
+}
+
+/* House */
+.house {
+  position: absolute;
+  bottom: 135px; /* Above the road */
+  left: calc(50% - 75px); /* Center horizontally */
+  width: 300px;
+  /* height: 100px; */
+  border-radius: 10px; /* Rounded corners */
+  animation: scale-house 15s linear infinite; /* Add scaling animation */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  z-index: 999; /* Send border behind the certificate */
+}
+
+.house-image{
+  width: 100%; /* Make image responsive */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.approaching-text {
+  position: absolute;
+  top: -30px; /* Position it above the house */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  color: white;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.5s ease; /* Smooth transition for visibility */
+}
+
+
+/* Person */
+.person {
+  position: absolute;
+  bottom: 135px; /* Same level as the house */
+  left: 0;
+  width: 100px;
+  animation: walk 15s linear infinite; /* Walking animation */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+}
+
+.person-image {
+  width: 100%; /* Make image responsive */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Trees */
+.trees {
+  position: absolute;
+  bottom: 225px; 
+  left: 50px;
+  width: 200px;
+  height: 80px;
+  animation: scale-trees 15s ease-in-out infinite ; /* Scale trees up and down continuously */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+
+}
+
+.tree-image {
+   width: 100%; /* Make image responsive */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Clouds */
+.clouds {
+  position: absolute;
+  top: 5%;
+  left: -200px; /* Start off-screen */
+  width: 300px;
+  height: 80px;
+  background-color: white; /* Cloud color */
+  border-radius: 50%; /* Round shape for clouds */
+ animation: move-clouds 10s linear infinite; /* Move clouds animation */
+}
+
+/* Keyframes for walking animation */
+@keyframes walk {
+ from { left: 0; }
+ to { left: calc(100vw - 30px); } /* Move across the screen */
+}
+
+@keyframes scale-trees {
+  0% {
+    transform: scale(1); /* Original size */
+  }
+  100% {
+    transform: scale(0.8); /* Scale down to 80% of original size */
+  }
+}
+
+/* Keyframes for clouds movement */
+@keyframes move-clouds {
+ from { left: -300px; }
+ to { left: calc(100vw + 300px); } /* Move across the screen */
+}
+
+/* Keyframes for scaling the house */
+@keyframes scale-house {
+  100%, 0% { transform: scale(1); } /* Normal size at start and end */
+  50% { transform: scale(1.2); } /* Scale up in the middle of the animation */
+}
+
+@keyframes show-text {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.house:hover .approaching-text {
+  animation: show-text 0.5s forwards; /* Make visible on hover (for testing) */
+}

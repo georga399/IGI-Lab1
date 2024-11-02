@@ -1,0 +1,36 @@
+<!-- reviews.html -->
+{% extends 'base.html' %}
+
+{% block style %}
+    {% load static %}
+    @import url("{% static 'css/hotelinfo/review.css' %}")
+{% endblock %}
+
+{% block title %}User Reviews - Hotel App{% endblock %}
+
+{% block content %}
+    <h1>User Reviews</h1>
+
+    <div class="reviews-container">
+        {% for review in reviews %}
+            <div class="review-card">
+                <h2 class="review-user">{{ review.user.get_full_name }}</h2>
+                <p class="review-body">{{ review.body }}</p>
+            </div>
+        {% empty %}
+            <p>No user reviews available.</p>
+        {% endfor %}
+    </div>
+
+    <div class="action-buttons">
+        {% if user.is_authenticated %}
+            <button type="button" class="add-review-button">
+                <a href="{% url 'add_review' %}">Add Review</a>
+            </button>
+        {% else %}
+            <button type="button" class="login-button">
+                <a href="{% url 'login' %}">Login</a>
+            </button>
+        {% endif %}
+    </div>
+{% endblock %}

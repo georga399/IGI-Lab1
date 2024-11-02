@@ -1,0 +1,98 @@
+
+.about-container {
+  max-width: 800px; /* Limit width for better readability */
+  margin: 20px auto; /* Center the container */
+  padding: 20px; /* Padding around the container */
+  background-color: #f9f9f9; /* Light background color for contrast */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.company-title {
+  font-size: 2.5em; /* Larger font size for title */
+  text-align: center; /* Center title */
+  color: #333; /* Dark color for text */
+}
+.company-description {
+  font-size: 1.2em; /* Standard font size for description */
+  margin-bottom: 20px; /* Space below description */
+}
+
+
+.history-list {
+  list-style-type: none; /* Remove default list styling */
+  padding-left: 0; /* Remove padding from list */
+}
+
+.history-list li {
+  margin-bottom: 10px; /* Space between history items */
+}
+
+.company-details {
+  font-weight: bold; /* Highlight company details with bold text */
+}
+
+.media-container {
+  display: flex; /* Use flexbox for media layout */
+  justify-content: space-around; /* Space out media elements evenly */
+}
+
+.media-video,
+.media-audio {
+  width: 45%; /* Set width for media elements to fit side by side */
+}
+
+
+.certificate-container {
+  position: relative; 
+  margin-bottom: 30px; 
+  padding: 20px; 
+  background: linear-gradient(to bottom right, #f1db5a, #f8f8f8);
+  border: 10px solid transparent; 
+  border-image: url("/static/cert-border.png") 33.3% / 80px round;
+}
+
+.certificate-image {
+  display: block; /* Make the image a block element */
+  margin: 0 auto;
+  max-width: 500px;
+  width: 100%; /* Make image responsive */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.cert-date {
+  text-align: center; /* Center text in date section */
+  font-size: 1em; /* Standard font size for date details */
+  color: #555; /* Slightly lighter color for date text */
+}
+
+.cert-h1 {
+  text-align: center;
+}
+
+/* Media Container Styles (if applicable) */
+.media-container {
+  display: flex; /* Use flexbox for media layout */
+  justify-content: space-around; /* Space out media elements evenly */
+}
+
+@media (max-width: 1000px) {
+  .company-title {
+      font-size: 2em; /* Slightly smaller title on mobile devices */
+  }
+
+  .company-description,
+  .cert-date,
+  .history-list li {
+      font-size: 1em; /* Standardize font size on mobile devices */
+  }
+
+  .media-video,
+  .media-audio {
+      width: 100%; /* Stack media elements on small screens */
+      margin-bottom: 10px; /* Space below each media element when stacked */
+  }
+  .media-container {
+    display: block; 
+  }
+}
