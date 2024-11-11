@@ -214,7 +214,7 @@ footer {
 
 @media (max-width: 1000px) {
   nav ul {
-      display: block;
+      /* display: block; */
       display: flex;
       flex-wrap: wrap;
       justify-content: center;

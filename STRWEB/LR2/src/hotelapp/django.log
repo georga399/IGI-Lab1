@@ -6433,3 +6433,168 @@ Company details: Company object (1)
 Company details: Company object (1)
 Company details: Company object (1)
 Company details: Company object (1)
+Watching for file changes with StatReloader
+Not Found: /uploads/employees/cafaaa29517c46278303b3a0a69c3dbd.jpg
+GET promos: current_time to get promos 2024-11-05 17:04:08.180187+00:00
+Company details: Company object (1)
+Not Found: /uploads/employees/cafaaa29517c46278303b3a0a69c3dbd.jpg
+Not Found: /uploads/employees/cafaaa29517c46278303b3a0a69c3dbd.jpg
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /register/
+Traceback (most recent call last):
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/accounts/views.py", line 56, in register
+    return render(request, 'register.html', {'form': form})
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/loader_tags.py", line 228, in do_block
+    raise TemplateSyntaxError(
+        "'%s' tag with name '%s' appears more than once" % (bits[0], block_name)
+    )
+django.template.exceptions.TemplateSyntaxError: 'block' tag with name 'content' appears more than once
+Not Found: /favicon.ico
+Internal Server Error: /register/
+Traceback (most recent call last):
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/accounts/views.py", line 56, in register
+    return render(request, 'register.html', {'form': form})
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR2/src/hotelapp/venv/lib/python3.14/site-packages/django/template/loader_tags.py", line 228, in do_block
+    raise TemplateSyntaxError(
+        "'%s' tag with name '%s' appears more than once" % (bits[0], block_name)
+    )
+django.template.exceptions.TemplateSyntaxError: 'block' tag with name 'content' appears more than once
+Get article counts: 5
+Not Found: /uploads/articles/a3b8b117280f4260b0e782e2342bb279.jpeg
+Company details: Company object (1)
+Get faqs. Count: 5
+Get faqs. Count: 5
+GET promos: current_time to get promos 2024-11-05 17:57:36.017010+00:00
+GET policy page
+Company details: Company object (1)
+Get faqs. Count: 5
+GET promos: current_time to get promos 2024-11-05 17:57:48.518831+00:00
+Not Found: /uploads/employees/cafaaa29517c46278303b3a0a69c3dbd.jpg
+Get article counts: 5
+Not Found: /uploads/articles/a3b8b117280f4260b0e782e2342bb279.jpeg
+GET policy page
+Get faqs. Count: 5
+GET rooms list
+GET promos: current_time to get promos 2024-11-05 17:58:22.739763+00:00
+Not Found: /uploads/employees/cafaaa29517c46278303b3a0a69c3dbd.jpg
+Company details: Company object (1)
+Get article counts: 5
+Not Found: /uploads/articles/a3b8b117280f4260b0e782e2342bb279.jpeg
+Get faqs. Count: 5
+GET policy page
+GET policy page
+GET rooms list
+Not Found: /uploads/employees/cafaaa29517c46278303b3a0a69c3dbd.jpg
+Company details: Company object (1)
+Get article counts: 5
+Not Found: /uploads/articles/a3b8b117280f4260b0e782e2342bb279.jpeg
+Company details: Company object (1)
+Not Found: /uploads/employees/cafaaa29517c46278303b3a0a69c3dbd.jpg
+GET promos: current_time to get promos 2024-11-05 18:00:07.724292+00:00
+Company details: Company object (1)
+Get article counts: 5
+Not Found: /uploads/articles/a3b8b117280f4260b0e782e2342bb279.jpeg
+Get faqs. Count: 5
+Get article counts: 5
+Not Found: /uploads/articles/a3b8b117280f4260b0e782e2342bb279.jpeg
+Company details: Company object (1)
+Get article counts: 5
+Not Found: /uploads/articles/a3b8b117280f4260b0e782e2342bb279.jpeg

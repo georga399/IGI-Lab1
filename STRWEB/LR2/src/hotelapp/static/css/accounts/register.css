@@ -1,0 +1,72 @@
+/* Styles for available (enabled) elements */
+input:enabled,
+select:enabled,
+textarea:enabled {
+    border: 2px solid #4CAF50; /* Green border for enabled fields */
+}
+
+/* Styles for required fields */
+input:required,
+select:required,
+textarea:required {
+    border: 2px solid #FF9800; /* Orange border for required fields */
+}
+
+/* Styles for disabled elements */
+input:disabled,
+select:disabled,
+textarea:disabled {
+    background-color: #e0e0e0; /* Light gray background for disabled fields */
+    color: #9e9e9e; /* Gray text color */
+}
+
+/* Styles for out-of-range values */
+input:out-of-range {
+    border: 2px solid #F44336; /* Red border for out-of-range values */
+}
+
+/* Styles for checked checkboxes and toggles */
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+    accent-color: #2196F3; /* Change the accent color for checked inputs */
+}
+
+/* Styles for quotes based on language (example) */
+.quote-en {
+    quotes: "“" "”"; /* English quotes */
+}
+
+.quote-fr {
+    quotes: "«" "»"; /* French quotes */
+}
+
+/* Apply styles to blockquote elements with language classes */
+blockquote {
+    padding: 10px;
+    border-left: 4px solid #ccc;
+}
+
+blockquote::before {
+    content: open-quote; /* Default opening quote */
+}
+
+blockquote::after {
+    content: close-quote; /* Default closing quote */
+}
+
+/* Specific language handling using attribute selectors */
+.quote-en blockquote::before {
+    content: "“"; /* Opening quote for English */
+}
+
+.quote-en blockquote::after {
+    content: "”"; /* Closing quote for English */
+}
+
+.quote-fr blockquote::before {
+    content: "«"; /* Opening quote for French */
+}
+
+.quote-fr blockquote::after {
+    content: "»"; /* Closing quote for French */
+}
