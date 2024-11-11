@@ -1,0 +1,42 @@
+<!-- promotions.html -->
+{% extends 'base.html' %}
+
+{% block style %} 
+    {% load static %}
+    @import url("{% static 'css/hotelinfo/promotions.css' %}")
+{% endblock %}
+
+{% block title %}Promotions - Hotel App{% endblock %}
+
+{% block content %}
+    <h1>Promotions</h1>
+
+    <h2>Active Promotions</h2>
+    <div class="promotions-container">
+        {% for promo in active_promos %}
+            <div class="promo-card active">
+                <h3 class="promo-title">{{ promo.title }}</h3>
+                <p class="promo-description">{{ promo.description }}</p>
+                <p class="promo-discount">Discount: {{ promo.amount }}</p>
+                <p class="promo-dates">Start Date: {{ promo.start_date }}</p>
+                <p class="promo-dates">Expire Date: {{ promo.expire_date }}</p>
+            </div>
+        {% empty %}
+            <p>No active promotions available.</p>
+        {% endfor %}
+    </div>
+
+    <h2>Archived Promotions</h2>
+    <div class="promotions-container">
+        {% for promo in archived_promos %}
+            <div class="promo-card archived">
+                <h3 class="promo-title">{{ promo.title }}</h3>
+                <p class="promo-description">{{ promo.description }}</p>
+                <p class="promo-dates">Start Date: {{ promo.start_date }}</p>
+                <p class="promo-dates">Expire Date: {{ promo.expire_date }}</p>
+            </div>
+        {% empty %}
+            <p>No archived promotions available.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

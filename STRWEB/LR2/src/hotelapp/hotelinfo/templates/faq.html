@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block style %}
+    {% load static %}
+    @import url("{% static 'css/hotelinfo/faq.css' %}")
+{% endblock %}
+
+{% block title %}
+FAQ
+{% endblock %}
+
+{% block content %}
+    <h1>Frequently Asked Questions</h1>
+    <div class="faq-container">
+        {% for q in faq %} 
+            <div class="faq-item">
+                <h3 class="faq-question">Q: {{ q.question }}</h3>
+                <p class="faq-answer">A: {{ q.answer }}</p>
+            </div>
+        {% empty %}
+            <p>No FAQs available.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

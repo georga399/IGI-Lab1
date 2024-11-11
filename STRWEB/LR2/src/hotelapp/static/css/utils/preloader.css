@@ -1,0 +1,38 @@
+.preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+}
+
+.dot {
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background-color: #ef384d;
+  opacity: 0.3;
+  animation: bounce 1.2s infinite ease-in-out;
+}
+
+.dot:nth-child(1) {
+  animation-delay: 0s;
+}
+.dot:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.dot:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-15px);
+    opacity: 1;
+  }
+}
