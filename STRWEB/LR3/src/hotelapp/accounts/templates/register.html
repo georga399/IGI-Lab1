@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block style %}
+{% load static %}
+    @import url("{% static 'css/accounts/register.css' %}")
+{% endblock %}
+
+{% block content %}
+<h1>Register</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Register">
+</form>
+<br>
+
+<div id="age-info"></div>
+
+<br>
+<a href="{% url 'login' %}" class="login-link">Login</a>
+
+{% load static %}
+<script src="{% static 'js/register.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+  font-family:  'Roboto', 'Arial', sans-serif;
+  line-height: 2;
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0e1;
+  overflow-x: hidden; /* Disable horizontal scrolling */
+}
+
+nav {
+  background: #333;
+  color: #fff;
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  z-index: 1000; 
+  width: 100%;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #ff6347; 
+}
+
+nav ul li a:visited {
+  color:#f0f0e1;
+}
+
+nav ul li a:link {
+  color: #fff; 
+}
+
+nav ul li a:link:hover {
+  color: #ff6347;
+}
+
+nav ul li a:visited:hover {
+  color: #ff6347;
+}
+
+nav ul li a:visited:active {
+  color: #fff;
+}
+
+header {
+  text-align: center;
+  padding: 5px;
+  background-color: #fff;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#timezone, #local-time {
+  font-size: 1em; 
+  margin: 5px 0; /* Space between lines */
+  color: #333; /* Darker text color */
+}
+
+h1, h2, h3 {
+  margin-top: 20px; /* Space above headings */
+  margin-bottom: 10px; /* Space below headings */
+  text-transform: uppercase; /* Transform heading text to uppercase */
+}
+
+.calendar-container {
+  background-color: #ffffff; /* White background for contrast */
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 5px; /* Padding around the calendar */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 5px auto; /* Center the calendar with vertical spacing */
+  max-width: 450px;
+}
+
+table {
+  width: 100%; /* Full width */
+  border-collapse: collapse; /* Remove spacing between cells */
+  margin: 20px 0; /* Space above and below the table */
+}
+
+th {
+  background-color: #333; /* Dark background for header */
+  color: white; /* White text color */
+  padding: 10px; /* Padding inside header cells */
+  text-align: center; /* Center text in header */
+  font-size: 1.2em; /* Larger font size for header */
+}
+
+td {
+  text-align: center; /* Center text in cells */
+  padding: 10px; /* Padding inside cells */
+  border: 1px solid #ddd; /* Light gray border around cells */
+}
+
+/* Change background color for empty cells */
+td.noday {
+  background-color: #f9f9f9; /* Light gray background for empty cells */
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2; 
+}
+
+tr:nth-child(odd) {
+  background-color: #ffffff; 
+} 
+
+/* Vertical alignment for cell content */
+td {
+  vertical-align: middle; /* Center content vertically in cells */
+}
+
+tr:hover {
+  background-color: #e0e0e0; 
+}
+
+
+
+caption {
+  font-size: 1.5em; /* Larger font size for caption */
+  margin-bottom: 10px; /* Space below caption */
+  text-align: center; /* Center caption text */
+}
+
+
+main {
+  padding: 20px;
+}
+
+.messages {
+  list-style-type: none;
+  margin: 20px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.messages li {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-left: 5px solid #007bff; /* Bootstrap primary color */
+}
+
+.messages .close {
+  float: right;
+  cursor: pointer;
+  color: red; /* Close button color */
+}
+
+/* img {
+  max-width: 300px;
+  height: auto;
+  
+} */
+
+footer {
+  text-align: center;
+  padding: 10px 0;
+  background-color: #333;
+  color: white;
+}
+
+.text-fragment {
+  margin: 20px 0; /* Margin above and below text fragments */
+  padding: 15px; /* Padding inside text fragments */
+  line-height: 1.6em; /* Increased line height for better readability */
+  text-align: justify; /* Justify text alignment */
+  text-indent: 20px; /* Indent the first line by 20 pixels */
+
+}
+
+.capitalized {
+  font-variant: small-caps; /* Use small caps for specific text fragments */
+}
+
+.text-fragment::first-line {
+  font-weight: bold; /* Bold first line */
+}
+
+.word-spacing {
+  word-spacing: 2px; /* Increase space between words */
+}
+
+.letter-spacing {
+  letter-spacing: 0.5px; /* Increase space between letters */
+}
+
+.word-break {
+  word-break: break-word; /* Break long words to prevent overflow */
+}
+
+.break-all {
+  overflow-wrap: break-word; /* Break words when necessary to avoid overflow */
+}
+
+@media (max-width: 1000px) {
+  nav ul {
+      /* display: block; */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+  
+  nav ul li {
+      margin-bottom: 10px; /* Space between items */
+      margin-right: 0; /* Remove right margin */
+  }
+}
+

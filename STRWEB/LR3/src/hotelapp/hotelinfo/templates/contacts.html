@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block scripts %}
+{% load static %}
+<script src="{% static 'js/contacts.js' %}"></script>
+{% endblock %}
+
+{% block style %}
+    {% load static %}
+    @import url("{% static 'css/hotelinfo/contacts.css' %}");
+    @import url("{% static 'css/utils/preloader.css' %}");
+
+{% endblock %}
+
+{% block title %}Contacts - Hotel App{% endblock %}
+
+{% block content %}
+<h1>Contacts</h1>
+
+<!-- Add Employee Button -->
+
+<button id="add-employee-btn" onclick="toggleForm()">Добавить сотрудника</button>
+
+<div class="preloader" id="preloader" style="display: none;">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+</div>
+    <!-- Employee Form -->
+    <div id="employee-form" style="display: none; margin-top: 20px;">
+        <h2>Добавить сотрудника</h2>
+        <input type="text" id="full-name" placeholder="ФИО" required />
+        <input type="text" id="photo-url" placeholder="URL Фото" required />
+        <input type="text" id="phone-number" placeholder="Телефон" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <div id="validation-message" style="color: red; margin-top: 10px;"></div>
+        <button id="submit-employee-btn" onclick="addEmployee()">Добавить в таблицу</button>
+    </div>
+
+    <!-- Filter Input -->
+    <div class="filter-container">
+        <input type="text" id="search-input" placeholder="Введите текст для поиска..." />
+        <button type="button" onclick="filterTable()">Найти</button>
+    </div>
+
+    <table class="contacts-table">
+        <thead>
+            <tr>
+                <th onclick="sortTable('select')">Select</th>
+                <th onclick="sortTable('name')">ФИО <span class="sort-indicator"></span></th>
+                <th onclick="sortTable('photo')">Фото</th>
+                <th onclick="sortTable('phone')">Телефон <span class="sort-indicator"></span></th>
+                <th onclick="sortTable('email')">Email <span class="sort-indicator"></span></th>
+            </tr>
+        </thead>
+        <tbody id="contacts-body">
+            {% for employee in employees %}
+                <tr class="employee-row" onclick="showDetails('{{ employee.user.first_name }}', '{{ employee.user.last_name }}', '{{ employee.phone_number }}', '{{ employee.user.email }}')">
+                    <td><input type="checkbox" name="employee_selection" value="{{ employee.id }}"></td>
+                    <td>{{ employee.user.first_name }} {{ employee.user.last_name }}</td>
+                    <td>
+                        {% if employee.image %}
+                            <img src="{{ employee.image.url }}" alt="Employee Photo" class="employee-photo">
+                        {% else %}
+                            <img src="{% static 'images/default_photo.png' %}" alt="Default Photo" class="employee-photo">
+                        {% endif %}
+                    </td>
+                    <td>{{ employee.phone_number }}</td>
+                    <td>{{ employee.user.email }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">Нет доступных сотрудников.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+     <!-- Pagination Controls -->
+    <div id="pagination-controls">
+        <button id="prev-page" onclick="changePage(-1)">Назад</button>
+        <span id="page-info"></span>
+        <button id="next-page" onclick="changePage(1)">Вперед</button>
+    </div>
+
+    <!-- Details Block -->
+    <div id="details-block" style="margin-top: 20px; display: none;">
+        <h2>Детали сотрудника</h2>
+        <p id="details-content"></p>
+    </div>
+
+    <!-- Reward Section -->
+    <button type="button" onclick="rewardEmployees()">Премировать</button>
+    <div id="reward-message" style="margin-top: 20px;"></div>
+
+{% endblock %}

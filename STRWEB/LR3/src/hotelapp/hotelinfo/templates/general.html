@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block style %}
+{% load static %}
+@import url("{% static 'css/hotelinfo/general.css' %}");
+@import url("{% static 'utils/slider.css' %}");
+{% endblock %}
+
+{% block scripts %}
+{% load static %}
+<!-- <script src="{% static 'js/general.js' %}"></script> -->
+{% endblock %}
+
+{% block title %}
+General
+{% endblock %}
+
+
+
+{% block content %}
+    {% load static %}
+    <section id="top">
+        <img src="{% static 'sea-beach3.jpeg' %}" id="bg" />
+        <h2 id="text-hotel">Hotel</h2>
+        <img src="{% static 'house_on_beach3.png' %}" id="house-on-beach" />
+        <img src="https://aryan-tayal.github.io/Mountains-Parallax/clouds_1.png" id="clouds_1" />
+        <img src="https://aryan-tayal.github.io/Mountains-Parallax/clouds_2.png" id="clouds_2" />
+
+        <!-- <img src="{% static 'palms.png'%}" id="palms_left" /> -->
+        <img src="{% static 'palms.png'%}" id="palms_right" />
+    </section>
+    <!-- <h1 class="company-name">Our hotel</h1>
+    <img src="{% static 'hotel_site_logo.png' %}" alt="Hotel logo" class="logo-image"> -->
+
+
+    <!-- <div class="scene">
+        <div class="road"></div>
+        <div class="house">
+            <img src="{% static 'hotel.svg' %}" alt="hotel" class="house-image">
+            <div class="approaching-text">Welcome to Our Hotel!</div>
+        </div>
+        <div class="person">
+            <img src="{% static 'man.svg' %}" alt="hotel" class="person-image">
+        </div>
+        <div class="trees">
+            <img src="{% static 'tree.svg' %}" alt="Trees" class="tree-image">
+        </div>
+        <div class="clouds"></div>
+    </div> -->
+
+    <!-- <div class="ad-banner">
+        <a href="https://google.com">
+            <img src="{% static 'ad1.jpeg' %}" alt="ad-banner">
+        </a>
+    </div> -->
+    <div class="slider">
+          <div class="slides">
+            <div class="slide" style="text-align:center">
+                <a href="https://google.com" >
+                    <img src="{% static 'ad1.jpeg' %}"  alt="ad-banner">
+                </a>
+                <div class="caption">Caption for Slide 1</div>
+            </div>
+            <div class="slide" style="text-align:center">
+                <a href="https://google.com">
+                    <img src="{% static 'ad2.jpeg' %}" alt="ad-banner">
+                </a>
+                <div class="caption">Caption for Slide 2</div>
+            </div>
+            <div class="slide" style="text-align:center">
+                <a href="https://google.com">
+                    <img src="{% static 'ad3.jpeg' %}" alt="ad-banner">
+                </a>
+                <div class="caption">Caption for Slide 3</div>
+            </div>
+            <div class="slide" style="text-align:center">
+                <a href="https://google.com">
+                    <img src="{% static 'ad4.jpeg' %}" alt="ad-banner">
+                </a>
+                <div class="caption">Caption for Slide 4</div>
+            </div>
+          </div>
+
+          <div style="text-align:center">
+            <span class="slider-dot" onclick="slider.goToSlide(0)"></span>
+            <span class="slider-dot" onclick="slider.goToSlide(1)"></span>
+            <span class="slider-dot" onclick="slider.goToSlide(2)"></span>
+            <span class="slider-dot" onclick="slider.goToSlide(3)"></span>
+          </div>
+
+        <button class="slider-btn slider-btn-prev" onclick="slider.prevSlide()">&#10094</button>
+        <button class="slider-btn slider-btn-next" onclick="slider.nextSlide()">&#10095</button>
+    </div>
+
+    {% if user.is_superuser %}
+    <h2>Update Slide Interval</h2>
+    <form id="intervalForm" method="POST" action="{% url 'general' %}">
+        {% csrf_token %}
+        <label for="intervalInput">Set Slide Interval (ms):</label>
+        <input type="number" id="intervalInput" name="interval" min="1000" value="{{ settings.interval }}">
+        <button type="submit">Update Interval</button>
+    </form>
+    {% endif %}
+
+
+
+    <h1>Latest article.</h1>
+    <h2>{{ article.title }}</h2>
+    <p>Summary: {{ article.summary }}</p>
+    <p>Last Modified: {{ article.last_modified_date }}</p>
+    {% if article.image %}
+        <img src="{{ article.image.url }}" alt="Article Image" class="article-image">
+        <br>
+    {% endif %}
+    <a href="{% url 'article' id=article.id %}" class="read-more">READ MORE</a>
+
+    <h2 id="Partners">Our Partners</h2>
+    <div class="partners-section">
+        {% for partner in partners %}
+            <div class="partner">
+                <a href="{{ partner.url }}" target="_blank">
+                    <img src="{{ partner.logo.url }}" alt="{{ partner.name }} logo">
+                    <p>{{ partner.name }}</p>
+                </a>
+            </div>
+        {% empty %}
+            <p>No partners to display.</p>
+        {% endfor %}
+    </div>
+
+
+<div class="preloader">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+</div>
+
+<input type="hidden" id="intervalValue" value="{{ settings.interval }}"> 
+
+<script src="{% static 'utils/slider.js' %}"></script>
+<script src="{% static 'js/general.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,12 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.content {
+  margin-top: 20px;
+}
+
+.example-image {
+  max-width: 100%; 
+  height: auto; 
+}

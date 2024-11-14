@@ -1,0 +1,150 @@
+@import url("../utils/preloader.css");
+@import url("../utils/animation.css");
+
+.logo-image {
+  width: 30%;
+  margin: auto;
+  display: block;
+}
+
+.company-name {
+  font-family: 'Great Vibes', cursive; /* Use the selected font */
+  font-size: 36px; /* Set desired font size */
+  letter-spacing: 0.05em; /* Adjust kerning */
+  color: #333; /* Set text color */
+  text-align: center; /* Center the text if needed */
+  font-kerning: normal;
+}
+
+.ad-banner {
+  width: 100%; /* Full width of the container */
+  max-width: 200px; /* Limit max width for larger screens */
+  overflow: hidden; /* Hide overflow from images */
+}
+
+.ad-banner img {
+  width: 100%; /* Responsive image that fills the banner */
+  height: auto; /* Maintain aspect ratio */
+}
+
+h1 {
+  font-size: 2em;
+  padding-left: 30px;
+}
+
+h2 {
+  padding-left: 30px;
+  font-size: 1.8em; /* Larger font for headings */
+  margin-bottom: 10px; /* Space below headings */
+}
+
+h2 + p {
+  font-size: 1.2em;  
+}
+
+h2 ~ p {
+  line-height: 1.5; /* Optional: adjust line height for better readability */
+  margin-top: 10px; /* Optional: add space above the paragraph */
+}
+
+.article-image {
+  width: 100%; /* Make image responsive */
+  max-width: 300px; /* Limit maximum width */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Rounded corners for images */
+}
+
+.read-more {
+  display: inline-block; /* Make it a block element for padding */
+  padding: 10px 15px; /* Padding for button-like appearance */
+  background-color: #333; /* Button color */
+  color: white; /* Text color for button */
+  text-decoration: none; /* Remove underline from button text */
+  border-radius: 5px; /* Rounded corners for button */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.read-more:hover {
+  background-color: #ff6347; /* Darker shade on hover for button */
+}
+
+#Partners {
+  margin-top: 40px; /* Space above Partners section */
+}
+
+.partners-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.partner {
+  margin: 15px;
+  text-align: center;
+}
+
+.partner img {
+  width: 150px; /* Set a standard width for logos */
+  height: auto;
+  border-radius: 25px;
+}
+
+.partner:hover img {
+  transform: scale(1.1); /* Scale up the image */
+}
+
+.partner:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+
+#top{
+  /* position: relative; */
+  /* width: 100%; */
+  /* height: 100%; */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#top::before{
+  content:'';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height:200px;
+  width: 100%;
+  background:linear-gradient(to top,#fff,transparent);
+  z-index: 1000;
+}
+
+#house-on-beach{
+  top: inherit;
+  bottom: 0;
+  width: 25%;
+  height: auto;
+}
+
+#palms_right {
+  top: inherit;
+  bottom: 0;
+  width: 40%;
+  height: auto;
+}
+
+section img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+#text-hotel{
+  position: relative;
+  color:white;
+  font-size: 10rem;
+}

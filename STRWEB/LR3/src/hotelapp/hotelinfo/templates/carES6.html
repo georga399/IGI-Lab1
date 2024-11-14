@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block content %}
+<script>
+  // JavaScript code using ES6 classes
+  class Car {
+      constructor(brand, number) {
+          this.brand = brand;
+          this.number = number;
+      }
+
+      get brand() {
+          return this._brand;
+      }
+
+      set brand(value) {
+          this._brand = value;
+      }
+
+      get number() {
+          return this._number;
+      }
+
+      set number(value) {
+          this._number = value;
+      }
+  }
+
+  class OwnerCar extends Car {
+      constructor(brand, number, owner) {
+          super(brand, number);
+          this.owner = owner;
+      }
+
+      get owner() {
+          return this._owner;
+      }
+
+      set owner(value) {
+          this._owner = value;
+      }
+  }
+
+  const carsArray = [];
+
+  function addCar() {
+      const brand = document.getElementById('brand').value;
+      const number = document.getElementById('number').value;
+      const owner = document.getElementById('owner').value;
+
+      const car = new OwnerCar(brand, number, owner);
+      carsArray.push(car);
+
+      document.getElementById('form').reset();
+      alert('Car added successfully!');
+  }
+
+  function findOwners() {
+      const brandToSearch = document.getElementById('searchBrand').value;
+      const results = carsArray
+          .filter(car => car.brand === brandToSearch)
+          .map(car => `${car.owner} - ${car.number}`);
+      
+      document.getElementById('results').innerText = results.length > 0 ? results.join('\n') : 'No owners found.';
+  }
+</script>
+
+<h1>Car Owner Management (ES6 Classes)</h1>
+    <form id="form" onsubmit="event.preventDefault(); addCar();">
+        <label for="brand">Brand:</label>
+        <input type="text" id="brand" required><br>
+
+        <label for="number">Number:</label>
+        <input type="text" id="number" required><br>
+
+        <label for="owner">Owner:</label>
+        <input type="text" id="owner" required><br>
+
+        <button type="submit">Add Car</button>
+    </form>
+
+    <h2>Find Owners by Brand</h2>
+    <input type="text" id="searchBrand" placeholder="Enter car brand">
+    <button onclick="findOwners()">Search</button>
+
+    <h3>Results:</h3>
+    <pre id="results"></pre>
+
+
+{% endblock %}

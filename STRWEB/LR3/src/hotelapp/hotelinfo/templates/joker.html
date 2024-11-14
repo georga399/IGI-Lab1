@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block scripts %}
+{% load static %}
+{% endblock %}
+
+{% block style %}
+{% load static %}
+@import url("{% static 'css/hotelinfo/joker.css' %}")
+{% endblock %}
+
+{% block content %}
+
+<h1>Настройки Стиля</h1>
+
+<label>
+  <input type="checkbox" id="styleToggle"> Показать настройки стиля
+</label>
+
+<div id="styleControls" style="display: none;">
+  <h2>Изменение стиля</h2>
+  
+  <label for="fontSize">Размер шрифта:</label>
+  <select id="fontSize">
+    <option value="16px">Обычный</option>
+    <option value="20px">Крупный</option>
+    <option value="24px">Очень крупный</option>
+    <option value="36px">Огромный</option>
+  </select>
+  
+  <label for="textColor">Цвет текста:</label>
+  <input type="color" id="textColor" value="#000000">
+  
+  <label for="bgColor">Цвет фона:</label>
+  <input type="color" id="bgColor" value="#ffffff">
+</div>
+
+<div class="content">
+  <p>Это пример текста, который будет изменяться в зависимости от выбранных вами настроек.</p>
+  {%load static%}
+  <img src="{% static 'hotel_site_logo.png' %}" alt="Пример изображения" class="example-image">
+</div>
+
+{% load static %}
+<script src="{% static 'js/joker.js' %}"></script>
+{% endblock %}
