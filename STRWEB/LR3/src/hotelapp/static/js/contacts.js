@@ -6,22 +6,31 @@ let sortDirection = {
     email: 'asc'
 };
 
+let rows;
+
+document.addEventListener("DOMContentLoaded", () => {
+    rows = document.querySelectorAll('.employee-row');
+    displayRows();
+});
+
 // Function to show/hide preloader
 function togglePreloader(show) {
     const preloader = document.getElementById('preloader');
     preloader.style.display = show ? 'flex' : 'none';
 }
 
-
 function displayRows() {
-    const rows = document.querySelectorAll('.employee-row');
     const totalRows = rows.length;
     const totalPages = Math.ceil(totalRows / rowsPerPage);
 
+    const allRows = document.querySelectorAll('.employee-row');
+
     // Hide all rows
-    rows.forEach((row) => {
+    allRows.forEach((row) => {
         row.style.display = 'none';
     });
+
+    console.log(rows);
 
     // Calculate start and end indices for current page
     const start = (currentPage - 1) * rowsPerPage;
@@ -62,28 +71,25 @@ function filterTable() {
     filterTimeout = setTimeout(() => {
         console.log("filtering");
         const input = document.getElementById('search-input').value.toLowerCase();
-        const rows = document.querySelectorAll('.employee-row');
+        allRows = document.querySelectorAll('.employee-row');
         
         togglePreloader(true);
-        // Show all rows initially
-        rows.forEach(row => {
-            row.style.display = '';
-        });
     
         // Filter rows based on input
-        rows.forEach(row => {
+        rows = [];
+        allRows.forEach(row => {
             const nameCell = row.cells[1].textContent.toLowerCase();
             const phoneCell = row.cells[3].textContent.toLowerCase();
             const emailCell = row.cells[4].textContent.toLowerCase();
             console.log(nameCell, phoneCell, emailCell);
     
-            if (!nameCell.includes(input) && !phoneCell.includes(input) && !emailCell.includes(input)) {
-                row.style.display = 'none'; 
-                console.log(row.style.display);
-            }
+            if (nameCell.includes(input) || phoneCell.includes(input) || emailCell.includes(input)) {
+                rows.push(row);
+            } 
         });
     
         currentPage = 1;
+        displayRows();
 
         togglePreloader(false);
     }, 300);
@@ -248,16 +254,18 @@ function addEmployee() {
 
     // If valid, add the row to the table
     if (isValid) {
+        // togglePreloader(true);
         // Show preloader while processing
-        togglePreloader(true);
 
         // Simulate a delay for adding employee (e.g., API call)
         setTimeout(() => {
             const tableBody = document.getElementById('contacts-body');
 
+            // togglePreloader(true);
             // Create a new row
             const newRow = document.createElement('tr');
-
+            newRow.className = 'employee-row';
+            newRow.setAttribute('onclick', `showDetails('${fullName}', '', '${phoneNumber}', '${email}')`);
             newRow.innerHTML = `
                 <td><input type='checkbox' name='employee_selection'></td>
                 <td>${fullName}</td>
@@ -274,13 +282,15 @@ function addEmployee() {
             toggleForm();
 
             alert("Сотрудник успешно добавлен!", "green");
-
+            rows = document.querySelectorAll('.employee-row');
+            
             // Refresh the display rows if needed
-            displayRows();
-
+            
             // Hide preloader after processing is complete
-            togglePreloader(false);
-        }, 1000); // Simulate a delay of one second for demonstration purposes
+            // togglePreloader(false);
+        }, 300); // Simulate a delay of one second for demonstration purposes
+        console.log(rows);
+        displayRows();
     }
 }
 
@@ -288,7 +298,6 @@ function addEmployee() {
 function clearFormFields() {
     document.getElementById('full-name').value = '';
     document.getElementById('photo-url').value = '';
-    document.getElementById('work-description').value = '';
     document.getElementById('phone-number').value = '';
     document.getElementById('email').value = '';
 
