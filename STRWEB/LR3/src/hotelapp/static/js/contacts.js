@@ -284,11 +284,7 @@ function addEmployee() {
             alert("Сотрудник успешно добавлен!", "green");
             rows = document.querySelectorAll('.employee-row');
             
-            // Refresh the display rows if needed
-            
-            // Hide preloader after processing is complete
-            // togglePreloader(false);
-        }, 300); // Simulate a delay of one second for demonstration purposes
+        }, 300); 
         console.log(rows);
         displayRows();
     }
@@ -303,4 +299,25 @@ function clearFormFields() {
 
     // Reset any validation styles
     resetValidationStyles();
+}
+
+function rewardEmployees() {
+    rows = document.querySelectorAll('.employee-row');
+    const checkboxes = document.querySelectorAll('input[name="employee_selection"]:checked');
+    const phoneNumbers = [];
+    checkboxes.forEach(checkbox => {
+        const row = checkbox.closest('tr'); 
+        const phoneNumber = row.cells[3].innerText;
+        phoneNumbers.push(phoneNumber);
+    });
+    var rewardMsg = document.getElementById("reward-message");
+    if (phoneNumbers.length > 0) {
+        var message = `Премировать: ${phoneNumbers.join(', ')}`;
+        
+        rewardMsg.innerText = message;
+    } else {
+        rewardMsg.innerText = '';
+    }
+    var rewardTxt = document.createElement("b");
+    rewardMsg.appendChild(rewardTxt);
 }

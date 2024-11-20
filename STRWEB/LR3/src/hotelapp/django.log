@@ -7634,3 +7634,38 @@ Watching for file changes with StatReloader
 Not Found: /favicon.ico
 Watching for file changes with StatReloader
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+count of payments: 4
+Internal Server Error: /staff_cabinet/
+Traceback (most recent call last):
+  File "/home/georga/.local/lib/python3.14/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/georga/.local/lib/python3.14/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/georga/.local/lib/python3.14/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/home/georga/Workspace/IGI-STRWEB/STRWEB/LR3/src/hotelapp/hotelsystem/views.py", line 272, in staff_cabinet
+    pr_room = Room.objects.get(id=pr_room_id)
+  File "/home/georga/.local/lib/python3.14/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/georga/.local/lib/python3.14/site-packages/django/db/models/query.py", line 649, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+hotelsystem.models.Room.DoesNotExist: Room matching query does not exist.
+Not Found: /favicon.ico
+Get article counts: 5
+Company details: Company object (1)
+Company details: Company object (1)
+Company details: Company object (1)
+Company details: Company object (1)
+Company details: Company object (1)
+Company details: Company object (1)
+Joke: {'type': 'general', 'setup': 'Why do birds fly south for the winter?', 'punchline': "Because it's too far to walk.", 'id': 344}
+Company details: Company object (1)
+Get article counts: 5
+Joke: {'type': 'general', 'setup': 'Can February march?', 'punchline': 'No, but April may.', 'id': 81}
+Joke: {'type': 'general', 'setup': 'Why do choirs keep buckets handy?', 'punchline': 'So they can carry their tune', 'id': 345}
+Joke: {'type': 'programming', 'setup': 'What goes after USA?', 'punchline': 'USB.', 'id': 383}

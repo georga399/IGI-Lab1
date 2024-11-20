@@ -28,8 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     minutesElement.dataset.title = declensionNum(minutes, ['минута', 'минуты', 'минут']);
     secondsElement.dataset.title = declensionNum(seconds, ['секунда', 'секунды', 'секунд']);
-
-    timeLeft--;
+    if (timeLeft > 0) {
+      timeLeft--;
+    }
     localStorage.setItem('timeLeft', timeLeft);
   }
 

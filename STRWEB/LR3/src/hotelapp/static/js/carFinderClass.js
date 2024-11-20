@@ -1,4 +1,3 @@
-// Базовый класс Car
 class Car {
   constructor(brand, number) {
       this.brand = brand;
@@ -26,10 +25,9 @@ class Car {
   }
 }
 
-// Класс-наследник OwnerCar
 class OwnerCar extends Car {
   constructor(brand, number, owner) {
-      super(brand, number); // Вызов конструктора базового класса
+      super(brand, number);
       this.owner = owner;
   }
 
@@ -46,13 +44,11 @@ class OwnerCar extends Car {
   }
 }
 
-// Функция для поиска владельцев по марке
 function findOwnersByBrand(carsArray, brand) {
   return carsArray.filter(car => car.brand === brand)
                   .map(car => `${car.owner} - ${car.number}`);
 }
 
-// Пример использования
 const carsArray = [];
 const car1 = new OwnerCar('Toyota', 'A123BC', 'Иванов');
 const car2 = new OwnerCar('Honda', 'B456CD', 'Петров');
