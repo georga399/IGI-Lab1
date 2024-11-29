@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block style %}
+    {% load static %}
+    @import url("{% static 'css/hotelinfo/about.css' %}")
+{% endblock %}
+
+{% block title %}
+About Company
+{% endblock %}
+
+{% load static %}
+{% block content %}
+<div class="about-container">
+    <h1 class="company-title">{{ company.title }}</h1>
+    <p class="company-description">
+        {{ company.description }}
+    </p>
+
+    <h2>Hotel Certificate</h2>
+    <div class="certificate-container">
+        <h1 class="cert-h1">База 2gis</h1>
+        <img src="{% static 'cert.jpeg' %}" alt="Hotel Certificate" class="certificate-image">
+        <div class="cert-date">
+            <p>офис 2gis</p>
+            <p>10 ноября 2024</p>
+        </div>
+    </div>
+
+    <h2>History</h2>
+    <ul class="history-list">
+        <li>Year 1: Description of events.</li>
+        <li>Year 2: Description of events.</li>
+        <li>Year 3: Description of events.</li>
+    </ul>
+
+    <h2>Company Details</h2>
+    <p class="company-details">Address: 123 Hotel St, City, Country</p>
+    <p class="company-details">Phone: +123456789</p>
+
+    <h2>Media</h2>
+    <div class="media-container">
+        <video controls class="media-video">
+            <source src="/media/editors_collections.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <audio controls class="media-audio">
+            <source src="{% static 'audio.mp3' %}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+</div>
+{% endblock %}

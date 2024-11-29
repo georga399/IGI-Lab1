@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block style %}
+{% load static %}
+    @import url("{% static 'css/hotelinfo/general.css' %}")
+{% endblock %}
+
+{% block title %}
+General
+{% endblock %}
+
+
+
+{% block content %}
+<div>
+    {% load static %}
+    <h1 class="company-name">Our hotel</h1>
+    <img src="{% static 'hotel_site_logo.png' %}" alt="Hotel logo" class="logo-image">
+
+
+    <div class="scene">
+        <div class="road"></div>
+        <div class="house">
+            <img src="{% static 'hotel.svg' %}" alt="hotel" class="house-image">
+            <div class="approaching-text">Welcome to Our Hotel!</div> <!-- Text to appear -->
+        </div>
+        <div class="person">
+            <img src="{% static 'man.svg' %}" alt="hotel" class="person-image">
+        </div>
+        <div class="trees">
+            <img src="{% static 'tree.svg' %}" alt="Trees" class="tree-image">
+        </div>
+        <div class="clouds"></div>
+    </div>
+
+    <div class="ad-banner">
+        <a href="https://google.com">
+            <img src="{% static 'ad1.jpeg' %}" alt="ad-banner">
+        </a>
+    </div>
+
+    <h1>Latest article.</h1>
+    <h2>{{ article.title }}</h2>
+    <p>Summary: {{ article.summary }}</p>
+    <p>Last Modified: {{ article.last_modified_date }}</p>
+    {% if article.image %}
+        <img src="{{ article.image.url }}" alt="Article Image" class="article-image">
+        <br>
+    {% endif %}
+    <a href="{% url 'article' id=article.id %}" class="read-more">READ MORE</a>
+
+    <h2 id="Partners">Our Partners</h2>
+    <div class="partners-section">
+        {% for partner in partners %}
+            <div class="partner">
+                <a href="{{ partner.url }}" target="_blank">
+                    <img src="{{ partner.logo.url }}" alt="{{ partner.name }} logo">
+                    <p>{{ partner.name }}</p>
+                </a>
+            </div>
+        {% empty %}
+            <p>No partners to display.</p>
+        {% endfor %}
+    </div>
+</div> 
+
+
+<div class="preloader">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+</div>
+
+{% endblock %}

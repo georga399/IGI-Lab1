@@ -1,0 +1,72 @@
+/* Reviews Page Styles */
+
+/* Container for user reviews */
+.reviews-container {
+  max-width: 800px; /* Limit width for better readability */
+  margin: 20px auto; /* Center the container */
+  padding: 20px; /* Padding around the container */
+}
+
+/* Individual review card styles */
+.review-card {
+  background-color: #fff; /* White background for cards */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 15px; /* Padding inside the card */
+  margin-bottom: 15px; /* Space between review cards */
+}
+
+/* User name styles */
+.review-user {
+  font-size: 20px; /* Larger font size for user names */
+  color: #333; /* Dark color for text */
+}
+
+/* Review body styles */
+.review-body {
+  font-size: 16px; /* Standard font size for review text */
+  color: #555; /* Slightly lighter color for review text */
+}
+
+/* Action buttons container */
+.action-buttons {
+  text-align: center; /* Center the buttons */
+}
+
+/* Button styles */
+button {
+  background-color: #007bff; /* Button color */
+  color: white; /* Text color for button */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners for button */
+  padding: 10px 20px; /* Padding inside button */
+  font-size: 16px; /* Font size for button text */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+/* Link styles inside buttons */
+button a {
+  color: white; /* Text color for links inside buttons */
+  text-decoration: none; /* Remove underline from links */
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+  .review-user {
+      font-size: 18px; /* Slightly smaller on mobile */
+  }
+
+  .review-body {
+      font-size: 14px; /* Slightly smaller on mobile */
+  }
+
+  button {
+      font-size: 14px; /* Smaller button text on mobile */
+      padding: 8px 16px; /* Adjust padding on mobile buttons */
+  }
+}

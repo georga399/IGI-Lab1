@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    {% load static %}
+    @import url("{% static 'css/hotelinfo/article.css' %}");
+{% endblock %}
+
+{% block title %}{{ article.title }} - Hotel App{% endblock %}
+
+{% block content %}
+    <h1>{{ article.title }}</h1>
+
+    <p>Summary: {{ article.summary }}</p>
+    <p>Last Modified: {{ article.last_modified_date }}</p>
+
+    {% if article.image %}
+        <img src="{{ article.image.url }}" alt="Article Image">
+    {% endif %}
+
+    <div class="article-content"> 
+        <p class="text-fragment capitalized word-spacing letter-spacing break-all">{{ article.body }}</p>
+        <p class="text-fragment capitalized word-spacing letter-spacing break-all">{{ article.body }}</p>
+        <p class="text-fragment capitalized word-spacing letter-spacing break-all">{{ article.body }}</p>
+        <p class="text-fragment capitalized word-spacing letter-spacing break-all">{{ article.body }}</p>
+        <p class="text-fragment capitalized word-spacing letter-spacing break-all">{{ article.body }}</p>
+    </div>
+{% endblock %}

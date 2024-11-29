@@ -1,0 +1,28 @@
+<!-- reviews.html -->
+{% extends 'base.html' %}
+
+{% block title %}User Reviews - Hotel App{% endblock %}
+
+{% block content %}
+    <h1>User Reviews</h1>
+
+    {% for review in reviews %}
+        <div>
+            <h2>{{ review.user.get_full_name }}</h2>
+            <p>{{ review.body }}</p>
+        </div>
+    {% empty %}
+        <p>No user reviews available.</p>
+    {% endfor %}
+
+    {% if user.is_authenticated %}
+        <button type="button">
+            <a href="{% url 'add_review' %}">Add review</a>
+        </button>
+
+    {% else %}
+        <button type="button">
+            <a href="{% url 'login' %}">Login</a>
+        </button>
+    {% endif %}
+{% endblock %}

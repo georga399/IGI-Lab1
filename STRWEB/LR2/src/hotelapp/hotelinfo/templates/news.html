@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    {% load static %}
+    @import url("{% static 'css/hotelinfo/news.css' %}")
+{% endblock %}
+
+{% block title %}News - Hotel App{% endblock %}
+
+{% block content %}
+    <h1>Articles</h1>
+
+    <div class="articles-container">
+        {% for article in articles %}
+            <div class="article-card">
+                <h2 class="article-title">{{ article.title }}</h2>
+                <p class="article-summary">Summary: {{ article.summary }}</p>
+                <p class="article-date">Last Modified: {{ article.last_modified_date }}</p>
+                {% if article.image %}
+                    <img src="{{ article.image.url }}" alt="Article Image" class="article-image">
+                    <br>
+                {% endif %}
+                <a href="{% url 'article' id=article.id %}" class="read-more">READ MORE</a>
+            </div>
+        {% empty %}
+            <p>No articles available.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

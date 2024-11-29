@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to our Hotel App, where you can find information about rooms, services, and promotions.">
+    <meta name="keywords" content="hotel, booking, rooms, promotions, reviews">
+    <meta name="author" content="georga">
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'hotel_site_logo.png' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        @import url("{% static 'css/hotelapp/base.css' %}");
+        {% block style %}
+        {% endblock %}
+    </style>
+    <title>
+        {% block title %}Hotel App{% endblock %}
+    </title>
+    <script>
+        function displayLocalTime() {
+            var userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            var date = new Date();
+            var options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            var localTime = date.toLocaleString("en-US", options);
+            document.getElementById("timezone").textContent = "User's Timezone: " + userTimezone;
+            document.getElementById("local-time").textContent = "User's Local Time: " + localTime;
+        }
+    </script>
+</head>
+<body onload="displayLocalTime()">
+    <nav>
+        <ul>
+            <li><a href="{% url 'general' %}">General</a></li>
+            <li><a href="{% url 'news' %}">News</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'faq' %}">FAQ</a></li>
+            <li><a href="{% url 'contacts' %}">Contacts</a></li>
+            <li><a href="{% url 'vacancy' %}">Vacancies</a></li>
+            <li><a href="{% url 'reviews' %}">Reviews</a></li>
+            <li><a href="{% url 'promo' %}">Promo</a></li>
+
+            {% if user.is_staff %}
+                <li><a href="{% url 'staff_cabinet' %}">Staff cabinet</a></li>
+            {% else %}
+                <li>
+                    <a href="{% url 'personal_cabinet' %}">
+                        <img src="{% static 'cart-icon.png' %}" alt="Cart" class="cart-icon" style="width: 20px; height: 20px;">
+                        Cart
+                    </a>
+                </li>
+            {% endif %}
+            <li><a href="{% url 'rooms' %}">Rooms</a></li>
+
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            <li><a href="{% url 'policy' %}">Policy</a></li>
+
+            <li><a href="{% url 'joker' %}">Joker</a></li>
+            {% autoescape off %}
+                {% block links %}
+                {% endblock %}
+            {% endautoescape %}
+
+        </ul>
+    </nav>
+    <header>
+        <p id="timezone">tyu</p>
+        <p id="local-time"></p>
+
+        {% load my_calendar %}
+        {% autoescape off %}
+        <div class="calendar-container">
+            <!-- <caption>caption</caption> -->
+            {{ ''|my_calendar }}</div>
+        {% endautoescape %}
+
+    </header>
+    <main>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">
+                    {{ message|safe }}
+                    <a href="#" class="close">✖</a>
+                </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+
+    {% autoescape off %}
+        {% block content %}
+        {% endblock %}
+    {% endautoescape %}
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Hotel app. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Joke of the day</h2>
+<cite>{{ joke.setup }}</cite>
+<p><cite>{{ joke.punchline }}</cite></p>
+
+<h2>Четверостишие</h2>
+<p>
+    <span title="There are many wonders in the world.">На свете <strong>много</strong> чудес,</span><br>
+    <span title="I will sniff them with my gaze.">Взглядом их я <strong>обнюхаю</strong>,</span><br>
+    <span title="I keep them in my heart like a secret.">В сердце храню, как <strong>секрет</strong>,</span><br>
+    <span title="That I must not forget in life.">Что в жизни мне не <strong>забыть</strong>.</span>
+</p>
+
+<div align="center">
+    <h2>Table of Jokers</h2>
+    <table >
+        <thead>
+            <tr>
+                <th rowspan="2">Имя</th>
+                <th colspan="2">Контактная информация</th>
+                <th rowspan="2">Возраст</th>
+            </tr>
+            <tr>
+                <th>Электронная почта</th>
+                <th>Телефон</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr itemscope itemtype="https://schema.org/employee">
+                <td itemprop="givenName">Иван Incredible</td>
+                <td itemprop="email">invan@joker.com</td>
+                <td itemprop="telephone">+375252525522</td>
+                <td>30</td>
+            </tr>
+            <tr itemscope itemtype="https://schema.org/employee">
+                <td itemprop="givenName">Мария Super</td>
+                <td itemprop="email">maria@super.com</td>
+                <td itemprop="telephone">+79876543210</td>
+                <td>25</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<fieldset>
+    <form action="http://example.com/app/profile.php" method="post">
+        Имя:
+        <input type="text" name="username"><br>
+        Адрес эл. почты:
+        Пол:<br>
+        <input checked type="radio" name="sex" value="male">мужской<br>
+        <input type="radio" name="sex" value="female">женский<br>
+        <input type="submit" value="Отправить">
+        <input type="reset" value="Очистить">
+        <input type="password" value="Пароль">
+        <input type="file" value="file">
+        <input type="checkbox" value="checkbox">
+        <input type="button" value="button">
+        <input type="image" value="image">
+        <input type="hidden" value="hidden">
+        <input type="date" name="birthday"> 
+        <input type="time" name="time"> 
+      </form>
+</fieldset>
+
+<span id="id" class="class" style="font-family: Verdana" title="title" accesskey="g" tabindex="1" dir="ltr" lang="en" contenteditable spellcheck translate="no" data-ex="example" draggable="false" >Global attributes</span>
+<code>
+    int main() { <wbr>
+        return 0;
+    }
+</code>
+
+{% endblock %}

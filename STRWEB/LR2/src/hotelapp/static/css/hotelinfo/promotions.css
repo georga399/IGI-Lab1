@@ -1,0 +1,62 @@
+/* promotions.css */
+
+/* General styles for promotions */
+.promotions-container {
+  display: flex; /* Use flexbox for layout */
+  flex-wrap: wrap; /* Allow wrapping of promotion cards */
+  gap: 20px; /* Space between promotion cards */
+  margin-top: 20px; /* Space above promotions */
+}
+
+/* Promotion card styles */
+.promo-card {
+  background-color: #fff; /* White background for cards */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 15px; /* Padding inside the card */
+  width: calc(30% - 20px); /* Three columns layout with gap adjustment */
+}
+
+/* Title styles */
+.promo-title {
+  font-size: 22px; /* Title size */
+  margin-bottom: 10px; /* Space below title */
+}
+
+/* Description styles */
+.promo-description {
+  margin-bottom: 10px; /* Space below description */
+}
+
+/* Discount styles */
+.promo-discount {
+  font-weight: bold; /* Bold text for discount */
+}
+
+/* Date styles */
+.promo-dates {
+  color: #888; /* Lighter color for dates */
+  font-size: 14px; /* Smaller font size for dates */
+}
+
+/* Active and Archived Promotions Differentiation */
+.promo-card.active {
+  border-left: 5px solid #28a745; /* Green border for active promotions */
+}
+
+.promo-card.archived {
+  border-left: 5px solid #dc3545; /* Red border for archived promotions */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .promo-card {
+      width: calc(45% - 20px); /* Two columns on medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .promo-card {
+      width: calc(100% - 20px); /* One column on small screens */
+  }
+}
